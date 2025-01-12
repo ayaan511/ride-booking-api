@@ -12,7 +12,7 @@ This is the backend for a ride-booking app built with Node.js, TypeScript, Graph
    to your MySQL Act Data.
 
 2. **Setting The Bacend Up**:
-   then npm install just in case (they are installed just for safety) but must do npm install scripts are in there what runs npx prisma generate.
+   then npm install just in case (they are installed just for safety) but must do npm install becuse  scripts are in package.json hat runs npx prisma generate.
    and then npm run dev
 
 
