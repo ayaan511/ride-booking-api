@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model driver {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(255)
+  email String @unique(map: "email") @db.VarChar(255)
+  ride  ride[]
+}
+
+model ride {
+  id        Int         @id @default(autoincrement())
+  userId    Int
+  driverId  Int
+  status    ride_status
+  createdAt DateTime?   @default(now()) @db.DateTime(0)
+  user      user        @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ride_ibfk_1")
+  driver    driver      @relation(fields: [driverId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ride_ibfk_2")
+
+  @@index([driverId], map: "driverId")
+  @@index([userId], map: "userId")
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(255)
+  email    String @unique(map: "email") @db.VarChar(255)
+  password String @db.VarChar(255)
+  ride     ride[]
+}
+
+enum ride_status {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
