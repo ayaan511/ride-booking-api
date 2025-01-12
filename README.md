@@ -6,7 +6,7 @@ This is the backend for a ride-booking app built with Node.js, TypeScript, Graph
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/<your-username>/ride-booking-api.git
+   git clone https://github.com/ayaan511/ride-booking-api.git
    cd ride-booking-api
    and change the env file
    to your MySQL Act Data.
